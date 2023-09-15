@@ -8,11 +8,11 @@
 import UIKit
 
 
-protocol ImageBlackAndWhiteConverterDelegate{
+protocol ImageBlackAndWhiteConverterDelegate: AnyObject{
     func convertedImage(_ image: UIImage?)
 }
 final class ImageBlackAndWhiteConverter {
-    private let delegate: ImageBlackAndWhiteConverterDelegate
+    private weak var delegate: ImageBlackAndWhiteConverterDelegate?
     init(delegate: ImageBlackAndWhiteConverterDelegate) {
         self.delegate = delegate
     }
@@ -27,7 +27,7 @@ final class ImageBlackAndWhiteConverter {
      //
      //
         image?.convertToBlackAndWhite(completion: {convertedImage in
-            self.delegate.convertedImage(convertedImage)
+            self.delegate?.convertedImage(convertedImage)
             print("Done")
         })
     }
