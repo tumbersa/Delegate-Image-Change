@@ -26,8 +26,8 @@ final class ImageBlackAndWhiteConverter {
      //
      //
      //
-        image?.convertToBlackAndWhite(completion: {convertedImage in
-            self.delegate?.convertedImage(convertedImage)
+        image?.convertToBlackAndWhite(completion: {[weak self] convertedImage in
+            self?.delegate?.convertedImage(convertedImage)
             print("Done")
         })
     }
